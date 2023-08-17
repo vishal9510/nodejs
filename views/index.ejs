@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="/savedata" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<%= (user.id!='')?user.id:''%>">
+        <label for="">name:</label>
+        <input type="text" name="name" value="<%= (user.id!='')?user.name:''%>"><br><br>
+
+        <label for="">age:</label>
+        <input type="number" name="age" value="<%= (user.id!='')?user.age:''%>"><br><br>
+
+
+        <label for="">image:</label>
+        <input type="file" name="image" ><br><br>
+
+        <input type="submit" value="save">
+
+    </form>
+    <br><br>
+
+    <table border="2">
+        <tr>
+            <td>id</td>
+            <td>name</td>
+            <td>age</td>
+            <td>image</td>
+            <td>action</td>
+        </tr>
+        <% data.forEach((i)=>{ %>
+            <tr>
+                <td>
+                    <%= i.id %>
+                </td>
+                <td>
+                    <%= i.name %>
+                </td>
+                <td>
+                    <%= i.age %>
+                </td>
+                <td>
+                    <img src="../<%= i.image %>" alt="Image" height="60px" width="60px">
+                </td>
+                <td><a href="edit/<%= i.id %>">edit</a><a href="del/<%= i.id %>">delet</a></td>
+            </tr>
+            <% }) %>
+    </table>
+
+</body>
+
+</html>
